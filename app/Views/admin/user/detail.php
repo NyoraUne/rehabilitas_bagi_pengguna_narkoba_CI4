@@ -1,6 +1,4 @@
 <?= $this->include('nav/head'); ?>
-<?= $this->include('alert/index'); ?>
-
 <div class="card">
     <div class="card-body">
         <form action="<?= base_url('Con_user/tambah_user'); ?>" method="post" enctype="multipart/form-data">
@@ -10,7 +8,7 @@
                     <!-- input data -->
                     Nik :
                     <div class="input-group mb-2 input-group-sm">
-                        <input name="nik_user" type="text" class="form-control" required>
+                        <input name="nik_user" type="text" class="form-control" value="<?= $user['nik_user']; ?>" required>
                     </div>
 
                     <div class="row">
@@ -18,14 +16,14 @@
                             <!-- input data -->
                             Tempat Lahir :
                             <div class="input-group mb-2 input-group-sm">
-                                <input name="lahir_user" type="text" class="form-control" required>
+                                <input name="lahir_user" type="text" class="form-control" value="<?= $user['lahir_user']; ?>" required>
                             </div>
                         </div>
                         <div class="col">
                             <!-- input data -->
                             Tanggal Lahir :
                             <div class="input-group mb-2 input-group-sm">
-                                <input name="tgllahir_user" type="date" class="form-control" required>
+                                <input name="tgllahir_user" type="date" class="form-control" value="<?= $user['lahir_user']; ?>" required>
                             </div>
                         </div>
                     </div>
@@ -33,13 +31,13 @@
                     <!-- input data -->
                     Alamat :
                     <div class="input-group mb-2 input-group-sm">
-                        <input name="alamat_user" type="text" class="form-control" required>
+                        <input name="alamat_user" type="text" class="form-control" value="<?= $user['lahir_user']; ?>" required>
                     </div>
 
                     <!-- input data -->
                     Kecamatan :
                     <div class="input-group mb-2 input-group-sm">
-                        <input name="kecamatan_user" type="text" class="form-control" required>
+                        <input name="kecamatan_user" type="text" class="form-control" value="<?= $user['lahir_user']; ?>" required>
                     </div>
 
                     <div class="row">
@@ -47,26 +45,24 @@
                             <!-- input data -->
                             RT :
                             <div class="input-group mb-2 input-group-sm">
-                                <input name="rt_user" type="text" class="form-control" required>
+                                <input name="rt_user" type="text" class="form-control" value="<?= $user['lahir_user']; ?>" required>
                             </div>
                         </div>
                         <div class="col">
                             <!-- input data -->
                             RW :
                             <div class="input-group mb-2 input-group-sm">
-                                <input name="rw_user" type="text" class="form-control" required>
+                                <input name="rw_user" type="text" class="form-control" value="<?= $user['lahir_user']; ?>" required>
                             </div>
                         </div>
                     </div>
-
                     <!-- input data -->
                     Status perikanan :
                     <div class="input-group mb-2 input-group-sm">
                         <select name="kawin_user" class="form-select" required>
-                            <option selected>Pilih status pernikahan</option>
-                            <option value="belum_menikah">Belum Menikah</option>
-                            <option value="menikah">Menikah</option>
-                            <option value="cerai">Cerai</option>
+                            <option value="belum_menikah" <?= ($user['kawin_user'] == 'belum_menikah') ? 'selected' : ''; ?>>Belum Menikah</option>
+                            <option value="menikah" <?= ($user['kawin_user'] == 'menikah') ? 'selected' : ''; ?>>Menikah</option>
+                            <option value="cerai" <?= ($user['kawin_user'] == 'cerai') ? 'selected' : ''; ?>>Cerai</option>
                         </select>
 
                     </div>
@@ -139,36 +135,5 @@
             </div>
         </form>
     </div>
-</div>
-<hr>
-<div class="mt-3">
-
-    <table id="tb1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nik</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Agama</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1; ?>
-            <?php foreach ($user as $us) : ?>
-                <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $us['nik_user']; ?></td>
-                    <td><?= $us['nama_user']; ?></td>
-                    <td><?= $us['jekel_user']; ?></td>
-                    <td><?= $us['agama_user']; ?></td>
-                    <td>
-                        <a href="<?= base_url('Con_user/detail_user/' . $us['id_user']); ?>" class="btn btn-ssm btn-outline-info">Details Informasi</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 </div>
 <?= $this->include('nav/foot'); ?>

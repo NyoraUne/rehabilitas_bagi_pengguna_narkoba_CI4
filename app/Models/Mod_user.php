@@ -24,10 +24,11 @@ class Mod_user extends Model
         'kawin_user',
         'pekerjaan_user',
         'ktp_user',
+        'slug',
     ];
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at_ikan';
+    protected $createdField  = 'created_at';
     protected $updatedField  = '';
     protected $deletedField  = '';
 }

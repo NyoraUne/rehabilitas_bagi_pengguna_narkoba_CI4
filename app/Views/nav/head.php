@@ -66,7 +66,7 @@
                         </a>
                         <div class="collapse" id="mastermenu">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?= base_url('/'); ?>">Data User</a>
+                                <a class="nav-link" href="<?= base_url('Con_user'); ?>">Data User</a>
                                 <a class="nav-link" href="<?= base_url('/'); ?>">Data Pecandu</a>
                                 <a class="nav-link" href="<?= base_url('/'); ?>">Data Petugas</a>
                                 <a class="nav-link" href="<?= base_url('/'); ?>">Data Narkotika</a>

@@ -29,7 +29,7 @@ class L_admin extends BaseController
         // $bread1 = '<li class="breadcrumb-item active">1</li>';
 
         $data = [
-            'title' => 'Dashboard User',
+            'title' => 'Dashboard Admin',
             'head' => 'Sistem informasi ketersediaan harga ikan di pasar pada kantor dinas perikanan(DISKAN) Rantau Kabupaten Tapin Berbasis WEB.',
             'type' => $bread,
             'username' => $username,
