@@ -55,7 +55,7 @@ class Con_user extends BaseController
         // upload File
         $ktp = $this->request->getFile('ktp_user');
         $FileName = $slugs . '.' . $ktp->getExtension();
-        $ktp->move(ROOTPATH . 'public/data/' . $slugs, $FileName);
+        $ktp->move(ROOTPATH . 'public/data/', $FileName);
 
 
         $data = [
@@ -108,5 +108,60 @@ class Con_user extends BaseController
         ];
 
         return view('admin/user/detail', $data);
+    }
+    function simpan_edit($id)
+    {
+        $input = $this->request->getPost();
+
+        $slug = url_title($input['nama_user'], '-', true);
+        $slugs = $input['nik_user'] . '_' . $slug;
+        $nama = ucwords($input['nama_user']);
+
+        // upload File
+        $ktp = $this->request->getFile('ktp_user');
+        $FileName = $slugs . '.' . $ktp->getExtension();
+
+        $destinationPath = ROOTPATH . 'public/data/';
+        $ktp->move($destinationPath, $FileName, true);
+
+        $data = [
+            'nik_user' => $input['nik_user'],
+            'nama_user' => $nama,
+            'lahir_user' => $input['lahir_user'],
+            'tgllahir_user' => $input['tgllahir_user'],
+            'jekel_user' => $input['jekel_user'],
+            'alamat_user' => $input['alamat_user'],
+            'desa_user' => $input['desa_user'],
+            'kecamatan_user' => $input['kecamatan_user'],
+            'kabupaten_user' => $input['kabupaten_user'],
+            'rt_user' => $input['rt_user'],
+            'rw_user' => $input['rw_user'],
+            'agama_user' => $input['agama_user'],
+            'kawin_user' => $input['kawin_user'],
+            'pekerjaan_user' => $input['pekerjaan_user'],
+            'ktp_user' => $FileName,
+            'slug' => $slugs,
+        ];
+
+        $status = $this->Mod_user
+            ->update($id, $data);
+
+        return redirect()->back();
+    }
+    public function showpdf($id)
+    {
+        $data = $this->Mod_user->where('ktp_user', $id)->first();
+
+        $pdfPath = FCPATH . 'data/'  . $id;
+        // dd($pdfPath);
+        // header('Content-Type: application/pdf');
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        readfile($pdfPath);
+    }
+    function hapus_data($id)
+    {
+        $this->Mod_user->delete($id);
+
+        return redirect()->to('/Con_user/index');
     }
 }
