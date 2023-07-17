@@ -1,6 +1,8 @@
 <?= $this->include('nav/head'); ?>
-<div class="card">
+<div class="card border-warning">
     <div class="card-body">
+        <?= $this->include('alert/index'); ?>
+
         <form action="<?= base_url('Con_user/simpan_edit/' . $user['id_user']); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <!-- //ANCHOR - Ini Col Bagian Pertama -->
@@ -8,7 +10,7 @@
                     <!-- input data -->
                     Nik :
                     <div class="input-group mb-2 input-group-sm">
-                        <input name="nik_user" type="text" class="form-control" value="<?= $user['nik_user']; ?>" required>
+                        <input name="nik_user" type="text" class="form-control" value="<?= $user['nik_user']; ?>" required readonly>
                     </div>
 
                     <div class="row">
@@ -70,7 +72,7 @@
                     <!-- input data -->
                     KTP :
                     <div class="input-group mb-2 input-group-sm">
-                        <input name="ktp_user" type="file" class="form-control" required>
+                        <input name="ktp_user" type="file" class="form-control">
                         <a class="btn btn-outline-info" href="<?= base_url('Con_user/showpdf/' . $user['ktp_user']); ?>" target="_blank"><?= $user['ktp_user']; ?></a>
                     </div>
                 </div>
@@ -127,9 +129,9 @@
 
                     <br>
                     <div class="float-end">
-
                         <button class="btn btn-primary btn-sm">Simpan Data</button>
-                        <a href="<?= base_url('Con_user/hapus_data/' . $user['id_user']); ?>" class="btn btn-danger btn-sm">Hapus Data</a>
+                        <a href="<?= base_url('Con_user'); ?>" class="btn btn-warning btn-sm">Kembali</a>
+                        <a href="<?= base_url('Con_user/hapus_data/' . $user['id_user']); ?>" class="btn btn-danger btn-sm" onclick="return confirmAction(event)">Hapus Data</a>
                     </div>
                 </div>
 

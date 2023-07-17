@@ -10,7 +10,6 @@ class Mod_narkotika extends Model
     protected $primaryKey = 'id_narkotika';
     protected $allowedFields = [
         'nama_narkotika',
-        'pasal',
         'foto',
         'keterangan',
     ];

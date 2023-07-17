@@ -36,6 +36,6 @@ class Con_petugas extends BaseController
         ];
 
 
-        return view('admin/user/index', $data);
+        return view('admin/petugas/index', $data);
     }
 }

@@ -12,6 +12,9 @@
     <link href="<?= base_url('src/'); ?>css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+
     <style>
         .linehead {
             margin-top: -10px;
@@ -53,7 +56,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Master Data</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="<?= base_url('/'); ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Laporan
                         </a>
@@ -67,9 +70,9 @@
                         <div class="collapse" id="mastermenu">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="<?= base_url('Con_user'); ?>">Data User</a>
+                                <a class="nav-link" href="<?= base_url('Con_narkotika'); ?>">Data Narkotika</a>
+                                <a class="nav-link" href="<?= base_url('Con_petugas'); ?>">Data Petugas</a>
                                 <a class="nav-link" href="<?= base_url('/'); ?>">Data Pecandu</a>
-                                <a class="nav-link" href="<?= base_url('/'); ?>">Data Petugas</a>
-                                <a class="nav-link" href="<?= base_url('/'); ?>">Data Narkotika</a>
                             </nav>
                         </div>
                         <!-- /* ---------------------------------- line ---------------------------------- */ -->

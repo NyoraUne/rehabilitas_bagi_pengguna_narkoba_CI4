@@ -29,7 +29,7 @@ class Con_user extends BaseController
 
         // dd($username);
 
-        $bread = '<li class="breadcrumb-item active">Tambah User</li>';
+        $bread = '<li class="breadcrumb-item active">Data User</li>';
         // $bread1 = '<li class="breadcrumb-item active">1</li>';
 
         $user = $this->Mod_user->findAll();
@@ -95,13 +95,16 @@ class Con_user extends BaseController
         $user = $this->Mod_user->where('id_user', $id)->first();
         $i = $user['slug'];
         // dd($i);
-        $bread = "<li class='breadcrumb-item active'>Detail User : $i</li>";
+        $bread = "
+        
+        <li class='breadcrumb-item active'><a href='../'>Data User</a></li>
+        <li class='breadcrumb-item active'>Detail User : $i</li>";
 
         $username['username'] = session('username');
 
         $data = [
             'title' => 'Dashboard Admin',
-            'head' => 'Form Input User.',
+            'head' => 'Form Edit User.',
             'type' => $bread,
             'username' => $username,
             'user' => $user,
@@ -117,12 +120,18 @@ class Con_user extends BaseController
         $slugs = $input['nik_user'] . '_' . $slug;
         $nama = ucwords($input['nama_user']);
 
-        // upload File
-        $ktp = $this->request->getFile('ktp_user');
-        $FileName = $slugs . '.' . $ktp->getExtension();
+        // Cek apakah input file KTP diisi
+        if (!empty($_FILES['ktp_user']['name'])) {
+            // upload File
+            $ktp = $this->request->getFile('ktp_user');
+            $FileName = $slugs . '.' . $ktp->getExtension();
 
-        $destinationPath = ROOTPATH . 'public/data/';
-        $ktp->move($destinationPath, $FileName, true);
+            $destinationPath = ROOTPATH . 'public/data/';
+            $ktp->move($destinationPath, $FileName, true);
+        } else {
+            $ktp = $this->Mod_user->where('id_user', $id)->first();
+            $FileName = $ktp['ktp_user']; // Tidak ada perubahan pada `ktp_user`
+        }
 
         $data = [
             'nik_user' => $input['nik_user'],
@@ -143,8 +152,15 @@ class Con_user extends BaseController
             'slug' => $slugs,
         ];
 
-        $status = $this->Mod_user
-            ->update($id, $data);
+        $status = $this->Mod_user->update($id, $data);
+
+        if ($status) {
+            // Jika data berhasil disimpan
+            $this->session->setFlashdata('success', 'Data berhasil disimpan.');
+        } else {
+            // Jika data gagal disimpan
+            $this->session->setFlashdata('error', 'Terjadi kesalahan saat menyimpan data.');
+        }
 
         return redirect()->back();
     }

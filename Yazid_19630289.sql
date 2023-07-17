@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 14, 2023 at 04:28 PM
+-- Generation Time: Jul 16, 2023 at 08:24 AM
 -- Server version: 8.0.33-0ubuntu0.22.04.2
 -- PHP Version: 8.1.2-1ubuntu2.13
 
@@ -52,11 +52,17 @@ INSERT INTO `tb_login` (`id_login`, `username`, `password`, `hak_akses`, `create
 CREATE TABLE `tb_narkotika` (
   `id_narkotika` int NOT NULL,
   `nama_narkotika` varchar(225) COLLATE utf8mb4_general_ci NOT NULL,
-  `pasal` varchar(225) COLLATE utf8mb4_general_ci DEFAULT '',
   `foto` varchar(225) COLLATE utf8mb4_general_ci DEFAULT '',
-  `keterangan` varchar(225) COLLATE utf8mb4_general_ci DEFAULT '',
+  `keterangan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_narkotika`
+--
+
+INSERT INTO `tb_narkotika` (`id_narkotika`, `nama_narkotika`, `foto`, `keterangan`, `created_at`) VALUES
+(1, 'Ganja', 'ganja.jpg', 'Narkotika Yang Sangat Berbahaya dan sering di salahgunakan untuk hal yang tidak baik, Dan harus di berantas secepeat nya.', '2023-07-15 06:20:27');
 
 -- --------------------------------------------------------
 
@@ -116,7 +122,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nik_user`, `nama_user`, `lahir_user`, `tgllahir_user`, `jekel_user`, `alamat_user`, `desa_user`, `kecamatan_user`, `kabupaten_user`, `rt_user`, `rw_user`, `agama_user`, `kawin_user`, `pekerjaan_user`, `ktp_user`, `slug`, `created_at`) VALUES
-(4, '3525011711086058', 'Widya Ilham', 'banjarbaru', '1998-04-05', 'Laki-laki', 'Jl Batu Malang', 'Batu', 'Malang', 'Malang', '12', '2', 'Islam', 'menikah', 'Programer', '3525011711086058_widya-ilham.pdf', '3525011711086058_widya-ilham', '2023-07-14 06:42:19');
+(7, '3525011711086058', 'Widya Ilham', 'banjarbaru', '2023-07-15', 'Laki-laki', 'Jl Batu Malang', 'Batu', 'landasan ulin', 'Malang', '3', '2', 'Islam', 'menikah', 'Programer', '3525011711086058_widya-ilham.pdf', '3525011711086058_widya-ilham', '2023-07-15 05:02:56');
 
 --
 -- Indexes for dumped tables
@@ -166,7 +172,7 @@ ALTER TABLE `tb_login`
 -- AUTO_INCREMENT for table `tb_narkotika`
 --
 ALTER TABLE `tb_narkotika`
-  MODIFY `id_narkotika` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_narkotika` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_pengguna`
@@ -184,7 +190,7 @@ ALTER TABLE `tb_petugas`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
