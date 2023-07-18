@@ -72,7 +72,7 @@
                                 <a class="nav-link" href="<?= base_url('Con_user'); ?>">Data User</a>
                                 <a class="nav-link" href="<?= base_url('Con_narkotika'); ?>">Data Narkotika</a>
                                 <a class="nav-link" href="<?= base_url('Con_petugas'); ?>">Data Petugas</a>
-                                <a class="nav-link" href="<?= base_url('/'); ?>">Data Pecandu</a>
+                                <a class="nav-link" href="<?= base_url('Con_pecandu'); ?>">Data Pecandu</a>
                             </nav>
                         </div>
                         <!-- /* ---------------------------------- line ---------------------------------- */ -->
