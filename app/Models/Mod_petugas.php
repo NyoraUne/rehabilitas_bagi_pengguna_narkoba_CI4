@@ -11,6 +11,7 @@ class Mod_petugas extends Model
     protected $allowedFields = [
         'id_user',
         'foto_petugas',
+        'role',
     ];
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
