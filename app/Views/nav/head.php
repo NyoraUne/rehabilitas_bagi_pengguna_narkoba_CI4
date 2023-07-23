@@ -83,7 +83,7 @@
                         </a>
                         <div class="collapse" id="adminmenu">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?= base_url('/'); ?>">Rekam Medis</a>
+                                <a class="nav-link" href="<?= base_url('Con_rekam_medis'); ?>">Rekam Medis</a>
                                 <a class="nav-link" href="<?= base_url('/'); ?>">Rehabilitas</a>
                             </nav>
                         </div>
